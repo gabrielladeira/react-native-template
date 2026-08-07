@@ -1,0 +1,25 @@
+{
+  "$comment": "Metadados do harness. Usado por scripts/harness-sync.sh para saber de onde vieram os guides e sensores deste projeto.",
+  "template": "https://github.com/SEU-USUARIO/react-native-template",
+  "harnessVersion": "1.1.0",
+  "stack": "expo-sdk-57",
+  "project": null,
+  "initializedAt": null,
+  "syncPaths": [
+    "CLAUDE.md",
+    "AGENTS.md",
+    "HARNESS.md",
+    "docs/",
+    ".claude/",
+    "eslint.config.js",
+    ".dependency-cruiser.cjs",
+    "knip.json",
+    "tsconfig.json",
+    ".prettierrc",
+    ".github/workflows/",
+    "scripts/spec-validate.sh",
+    "scripts/harness-sync.sh",
+    "openspec/config.yaml"
+  ],
+  "sdd": "openspec"
+}

@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "rn-harness",
+    "slug": "rn-harness",
+    "version": "0.1.0",
+    "scheme": "rnharness",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.rnharness"
+    },
+    "android": {
+      "edgeToEdgeEnabled": true,
+      "package": "com.example.rnharness"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-sqlite"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "apiBaseUrl": "https://api.example.com",
+      "wsUrl": "wss://api.example.com/ws"
+    }
+  }
+}

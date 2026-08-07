@@ -1,0 +1,92 @@
+{
+  "name": "react-native-template",
+  "version": "0.1.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "prebuild": "expo prebuild --clean",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "arch": "depcruise src app --config .dependency-cruiser.cjs",
+    "spec": "./scripts/spec-validate.sh",
+    "deadcode": "knip",
+    "doctor": "expo-doctor",
+    "verify": "npm run typecheck && npm run lint && npm run arch && npm run spec && npm run test",
+    "verify:full": "npm run verify && npm run deadcode && npm run doctor"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.66.0",
+    "expo": "^57.0.0",
+    "expo-constants": "~18.0.0",
+    "expo-linking": "~8.0.0",
+    "expo-router": "~7.0.0",
+    "expo-secure-store": "~15.0.0",
+    "expo-sqlite": "~16.0.0",
+    "expo-status-bar": "~3.0.0",
+    "react": "19.2.0",
+    "react-native": "0.86.0",
+    "react-native-gesture-handler": "~2.32.0",
+    "react-native-mmkv": "^3.3.3",
+    "react-native-reanimated": "~4.5.0",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "~4.20.0",
+    "react-native-worklets": "~0.10.0",
+    "zod": "^4.0.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@testing-library/react-native": "^13.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/react": "~19.2.0",
+    "dependency-cruiser": "^16.9.0",
+    "eslint": "^9.20.0",
+    "eslint-config-expo": "^10.0.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-boundaries": "^5.0.1",
+    "jest": "^29.7.0",
+    "jest-expo": "~57.0.0",
+    "knip": "^5.44.0",
+    "prettier": "^3.5.0",
+    "typescript": "~5.9.0",
+    "typescript-eslint": "^8.24.0"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/test/setup.ts"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg|react-native-mmkv))"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/test/**",
+      "!src/**/*.d.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 60,
+        "functions": 55,
+        "branches": 50
+      },
+      "./src/features/**/model/": {
+        "lines": 90
+      },
+      "./src/shared/api/": {
+        "lines": 85
+      }
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
+  }
+}

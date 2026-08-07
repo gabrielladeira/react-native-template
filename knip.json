@@ -1,0 +1,7 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": ["app/**/*.{ts,tsx}", "src/test/**/*.ts", "src/**/*.test.{ts,tsx}"],
+  "project": ["src/**/*.{ts,tsx}", "app/**/*.{ts,tsx}"],
+  "ignoreDependencies": ["expo-router", "jest-expo", "eslint-config-expo"],
+  "ignore": ["**/*.d.ts"]
+}
