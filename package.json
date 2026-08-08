@@ -20,15 +20,16 @@
     "spec": "./scripts/spec-validate.sh",
     "deadcode": "knip",
     "doctor": "expo-doctor",
-    "verify": "npm run typecheck && npm run lint && npm run arch && npm run spec && npm run test",
-    "verify:full": "npm run verify && npm run deadcode && npm run doctor"
+    "verify": "pnpm run typecheck && pnpm run lint && pnpm run arch && pnpm run spec && pnpm run test",
+    "verify:full": "pnpm run verify && pnpm run deadcode && pnpm run doctor"
   },
+  "packageManager": "pnpm@11.13.0",
   "dependencies": {
     "@tanstack/react-query": "^5.66.0",
     "expo": "^57.0.0",
     "expo-constants": "~18.0.0",
     "expo-linking": "~8.0.0",
-    "expo-router": "~7.0.0",
+    "expo-router": "~57.0.0",
     "expo-secure-store": "~15.0.0",
     "expo-sqlite": "~16.0.0",
     "expo-status-bar": "~3.0.0",
@@ -44,6 +45,7 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@react-native/jest-preset": "^0.86.2",
     "@testing-library/react-native": "^13.0.0",
     "@types/jest": "^29.5.14",
     "@types/react": "~19.2.0",
@@ -65,7 +67,7 @@
       "<rootDir>/src/test/setup.ts"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg|react-native-mmkv))"
+      "node_modules/(?!(?:.*/)?((jest-)?react-native|@react-native(-community)?|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg|react-native-mmkv))"
     ],
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",

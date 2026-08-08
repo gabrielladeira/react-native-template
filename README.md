@@ -24,22 +24,22 @@ Depois:
 1. Ajuste `app.json` → `expo.extra.apiBaseUrl` e `wsUrl`.
 2. Gere o development build — MMKV e SecureStore **não** rodam em Expo Go:
    ```bash
-   npm run ios      # ou npm run android
+   pnpm run ios     # ou pnpm run android
    ```
-3. `npm start` para o dia a dia.
+3. `pnpm start` para o dia a dia.
 
 ## Comandos
 
 | | |
 |---|---|
-| `npm run verify` | tipos + lint + arquitetura + specs + testes — **rode antes de todo PR** |
-| `npm run typecheck` | `tsc --noEmit` |
-| `npm run lint` | ESLint, incluindo fronteiras de camada |
-| `npm test` | Jest + Testing Library |
-| `npm run arch` | dependency-cruiser: ciclos, órfãos, deps não declaradas |
-| `npm run spec` | valida as specs do OpenSpec (pula com aviso se o CLI não estiver instalado) |
-| `npm run deadcode` | knip |
-| `npm run doctor` | expo-doctor |
+| `pnpm run verify` | tipos + lint + arquitetura + specs + testes — **rode antes de todo PR** |
+| `pnpm run typecheck` | `tsc --noEmit` |
+| `pnpm run lint` | ESLint, incluindo fronteiras de camada |
+| `pnpm test` | Jest + Testing Library |
+| `pnpm run arch` | dependency-cruiser: ciclos, órfãos, deps não declaradas |
+| `pnpm run spec` | valida as specs do OpenSpec (pula com aviso se o CLI não estiver instalado) |
+| `pnpm run deadcode` | knip |
+| `pnpm run doctor` | expo-doctor |
 | `./scripts/harness-sync.sh --stat` | o que mudou no harness do template desde este projeto |
 
 ## Estrutura
@@ -76,7 +76,7 @@ O conceito, o racional de cada peça e como evoluir tudo isso está em
 /opsx:explore      requisito vago? investigue antes de comprometer nada
 /opsx:propose      gera proposal, specs, design e tasks — revise com o humano aqui
 /opsx:apply        implementa as tasks
-npm run verify     sensores computacionais (inclui openspec validate)
+pnpm run verify    sensores computacionais (inclui openspec validate)
 /code-review       sensor inferencial: aderência à spec + qualidade
 /opsx:verify       implementação x artefatos (completude, correção, coerência)
 /opsx:archive      arquiva e funde as specs delta nas specs vivas

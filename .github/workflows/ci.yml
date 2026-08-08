@@ -15,28 +15,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
       - name: Instalar OpenSpec
-        run: npm install -g @fission-ai/openspec@latest
+        run: pnpm add -g @fission-ai/openspec@latest
 
       # Cada passo é um sensor independente: `continue-on-error: false` de propósito,
       # mas com `if: always()` para o PR mostrar TODAS as falhas de uma vez em vez de
       # uma por push. Menos ciclos de correção para humano e agente.
       - name: Tipos
         if: always()
-        run: npm run typecheck
+        run: pnpm run typecheck
 
       - name: Lint e fronteiras de camada
         if: always()
-        run: npm run lint
+        run: pnpm run lint
 
       - name: Fitness de arquitetura
         if: always()
-        run: npm run arch
+        run: pnpm run arch
 
       # No CI a ausência do CLI é erro, não aviso — aqui ele é instalado de propósito.
       - name: Validação das specs
@@ -44,15 +45,15 @@ jobs:
         env:
           OPENSPEC_REQUIRED: '1'
           OPENSPEC_TELEMETRY: '0'
-        run: npm run spec
+        run: pnpm run spec
 
       - name: Testes
         if: always()
-        run: npm run test -- --coverage --ci
+        run: pnpm run test -- --coverage --ci
 
       - name: Formatação
         if: always()
-        run: npm run format:check
+        run: pnpm run format:check
 
   drift:
     name: Sensores de drift (não bloqueiam)
@@ -60,12 +61,13 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
       - name: Código morto
-        run: npm run deadcode
+        run: pnpm run deadcode
       - name: Saúde do setup Expo
-        run: npx expo-doctor@latest
+        run: pnpm dlx expo-doctor@latest

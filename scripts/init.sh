@@ -16,7 +16,7 @@ cd "$(dirname "$0")/.."
 
 # Valores atuais do template. init.sh faz busca-e-troca sobre eles.
 # (O template usa defaults REAIS, não placeholders tipo __APP_NAME__, para que
-#  `npm run verify` passe no próprio template — um template que não roda os
+#  `pnpm run verify` passe no próprio template — um template que não roda os
 #  próprios sensores está quebrado e ninguém percebe.)
 OLD_SLUG='rn-harness'
 OLD_PKG='react-native-template'
@@ -181,7 +181,7 @@ fi
 echo
 echo "Feito. Próximos passos:"
 echo "  1. ./scripts/bootstrap.sh      # instala deps e roda os sensores"
-echo "  2. npm run ios                 # development build (Expo Go não serve)"
+echo "  2. pnpm run ios                # development build (Expo Go não serve)"
 echo "  3. rm scripts/init.sh          # opcional: já cumpriu o papel"
 echo
 echo "Confira o diff antes de commitar:  git diff"

@@ -23,7 +23,7 @@ git clone git@github.com:voce/seu-projeto.git && cd seu-projeto
 ./scripts/bootstrap.sh
 
 # 4. Development build (MMKV e SecureStore não rodam em Expo Go)
-npm run ios     # ou npm run android
+pnpm run ios    # ou pnpm run android
 ```
 
 `init.sh` também aceita flags, para automação:
@@ -50,7 +50,7 @@ precisam estar mais afiados.** Você só descobre que quebrou alguma coisa depoi
 derivado quebra.
 
 Por isso o template usa defaults funcionais (`rn-harness`, `com.example.rnharness`,
-`https://api.example.com`) e o `init.sh` faz busca-e-troca. O template roda `npm run verify`
+`https://api.example.com`) e o `init.sh` faz busca-e-troca. O template roda `pnpm run verify`
 como qualquer projeto — o CI dele é a garantia de que os projetos derivados nascem saudáveis.
 
 Consequência prática: **se você mudar esses defaults, atualize as constantes `OLD_*` no topo do
@@ -85,7 +85,7 @@ projeto em silêncio. O que existe é tornar a divergência **visível e barata 
 ./scripts/harness-sync.sh --stat                    # o que divergiu
 ./scripts/harness-sync.sh                           # diff completo
 ./scripts/harness-sync.sh --pull docs/architecture.md   # traz um caminho
-npm run verify                                      # sempre, depois de puxar
+pnpm run verify                                     # sempre, depois de puxar
 ```
 
 O script adiciona o template como um remote git (`harness-template`) e compara só os caminhos
@@ -145,7 +145,7 @@ são do projeto, não do template.
 
 ## Checklist antes de publicar uma versão do template
 
-- [ ] `npm run verify:full` passa
+- [ ] `pnpm run verify:full` passa
 - [ ] `./scripts/init.sh --yes` numa cópia limpa produz um projeto que também passa no `verify`
 - [ ] Nenhuma referência sobrou aos defaults antigos depois do `init`
 - [ ] `harness.json > template` aponta para a URL real do repositório

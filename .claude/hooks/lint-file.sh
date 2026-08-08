@@ -22,7 +22,7 @@ file=$(printf '%s' "$payload" | node -e '
 [[ "$file" =~ \.(ts|tsx)$ ]] || exit 0
 [[ -f "$file" ]] || exit 0
 
-output=$(npx eslint --fix --max-warnings=0 "$file" 2>&1)
+output=$(pnpm exec eslint --fix --max-warnings=0 "$file" 2>&1)
 status=$?
 
 if [[ $status -ne 0 ]]; then

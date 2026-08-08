@@ -18,3 +18,4 @@ editados depois de aceitos — para mudar de ideia, escreva um novo que **supers
 | [0006](0006-zod-na-fronteira.md) | Zod como validação obrigatória em toda fronteira de I/O | Aceito |
 | [0007](0007-fatias-verticais.md) | Fatias verticais com fronteiras verificadas por lint | Aceito |
 | [0008](0008-openspec-como-framework-de-sdd.md) | OpenSpec como framework de spec-driven development | Aceito |
+| [0009](0009-pnpm-como-gerenciador-de-pacotes.md) | pnpm como gerenciador de pacotes | Aceito |

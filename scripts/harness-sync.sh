@@ -54,7 +54,7 @@ case "${1:-}" in
     shift
     git checkout "$REF" -- "$@"
     echo "Trazido de $REF: $*"
-    echo "Revise com 'git diff --cached' e rode 'npm run verify' antes de commitar."
+    echo "Revise com 'git diff --cached' e rode 'pnpm run verify' antes de commitar."
     ;;
   *)
     echo

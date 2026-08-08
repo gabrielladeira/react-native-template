@@ -6,7 +6,7 @@ description: Revisar mudanças deste projeto contra o harness antes de abrir PR.
 # Review (sensor inferencial)
 
 Este é o passo de julgamento semântico que os sensores computacionais não cobrem.
-Rode **depois** de `npm run verify` passar — se não passou, não há o que revisar ainda.
+Rode **depois** de `pnpm run verify` passar — se não passou, não há o que revisar ainda.
 
 ## Como proceder
 

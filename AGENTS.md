@@ -5,7 +5,7 @@ independente do agente que você estiver usando). Leia `CLAUDE.md` primeiro.
 
 Resumo mínimo, caso você não consiga abrir aquele arquivo:
 
-- Rode `npm run verify` antes de declarar qualquer tarefa concluída.
+- Rode `pnpm run verify` antes de declarar qualquer tarefa concluída.
 - Camadas: `app/` → `src/features/` → `src/shared/`. Nunca o contrário.
 - Todo endpoint REST passa por `defineEndpoint` + schema Zod (`src/shared/api/http.ts`).
 - Sem `any`, sem `console.log`, sem `fetch` solto, sem import cruzado entre features.

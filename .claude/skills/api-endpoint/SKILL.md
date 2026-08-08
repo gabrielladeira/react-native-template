@@ -75,7 +75,7 @@ validação Zod. No mínimo: caminho feliz e uma resposta que viola o schema.
 ## 6. Verificação
 
 ```bash
-npm run verify
+pnpm run verify
 ```
 
 ## Erros comuns que este harness detecta

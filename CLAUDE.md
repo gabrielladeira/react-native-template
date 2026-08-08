@@ -10,15 +10,15 @@ Este arquivo é o **guia de entrada**. Ele é curto de propósito: detalhes fica
 
 | Objetivo | Comando |
 | --- | --- |
-| Verificação completa (rode antes de dizer que terminou) | `npm run verify` |
-| Tipos | `npm run typecheck` |
-| Lint (inclui regras de arquitetura) | `npm run lint` |
-| Testes | `npm test` |
-| Fitness de arquitetura (ciclos, órfãos) | `npm run arch` |
-| Código morto | `npm run deadcode` |
-| Saúde do setup Expo | `npm run doctor` |
+| Verificação completa (rode antes de dizer que terminou) | `pnpm run verify` |
+| Tipos | `pnpm run typecheck` |
+| Lint (inclui regras de arquitetura) | `pnpm run lint` |
+| Testes | `pnpm test` |
+| Fitness de arquitetura (ciclos, órfãos) | `pnpm run arch` |
+| Código morto | `pnpm run deadcode` |
+| Saúde do setup Expo | `pnpm run doctor` |
 
-**Nunca** considere uma tarefa concluída sem `npm run verify` passando.
+**Nunca** considere uma tarefa concluída sem `pnpm run verify` passando.
 
 ## Arquitetura em uma frase
 
@@ -79,8 +79,8 @@ Detalhes e racional: `docs/adr/0008-openspec-como-framework-de-sdd.md`.
 
 Verifique em `docs/adr/` se já existe decisão sobre o assunto. Se a nova dependência
 substituir algo existente, escreva um ADR justificando — não troque em silêncio.
-Para pacotes Expo/RN use `npx expo install <pacote>` (resolve a versão compatível com o SDK),
-nunca `npm install` direto.
+Para pacotes Expo/RN use `pnpm exec expo install <pacote>` (resolve a versão compatível com o SDK),
+nunca `pnpm add` fora do fluxo do Expo (pode instalar versão incompatível com o SDK).
 
 ## Limites
 

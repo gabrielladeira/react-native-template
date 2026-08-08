@@ -12,8 +12,8 @@ editar código.
 
 | Sintoma | Camada provável | Primeiro comando |
 | --- | --- | --- |
-| Erro só depois de instalar pacote | nativo / prebuild | `npx expo-doctor` |
-| "Unable to resolve module" | Metro / alias | `npx expo start --clear` |
+| Erro só depois de instalar pacote | nativo / prebuild | `pnpm dlx expo-doctor` |
+| "Unable to resolve module" | Metro / alias | `pnpm exec expo start --clear` |
 | Tela branca no boot | erro no `_layout` ou em `env.ts` | veja o log do Metro, não do device |
 | Funciona no simulador, quebra no device | permissão / rede / release build | log nativo (Xcode / logcat) |
 | Socket não conecta | token, URL, TLS | `realtime.getState()` + logs de `[realtime]` |
@@ -23,11 +23,11 @@ editar código.
 ## 2. Comandos úteis
 
 ```bash
-npx expo-doctor                 # incompatibilidade de versão, config quebrada
-npx expo start --clear          # limpa cache do Metro
-npx expo install --fix          # alinha deps com o SDK atual
-npx expo prebuild --clean       # regenera ios/ e android/ do zero (peça antes de rodar)
-npm run arch                    # ciclo de import travando o bundle
+pnpm dlx expo-doctor                 # incompatibilidade de versão, config quebrada
+pnpm exec expo start --clear          # limpa cache do Metro
+pnpm exec expo install --fix          # alinha deps com o SDK atual
+pnpm exec expo prebuild --clean       # regenera ios/ e android/ do zero (peça antes de rodar)
+pnpm run arch                    # ciclo de import travando o bundle
 ```
 
 ## 3. Erros conhecidos deste projeto
@@ -43,7 +43,7 @@ Decida: schema errado ou backend errado. Não afrouxe o schema para calar o erro
 Backend em `localhost` não existe do ponto de vista do device. Use IP da máquina na rede.
 
 **MMKV lança em runtime**
-MMKV não roda em Expo Go. Use development build (`npm run ios` / `npm run android`).
+MMKV não roda em Expo Go. Use development build (`pnpm run ios` / `pnpm run android`).
 
 **Memória alta com Reanimated**
 Regressão conhecida do Hermes V1 no SDK 56/57 (importar `react-native-reanimated` aumenta
@@ -52,5 +52,5 @@ o uso de memória em 25–30%). Mitigação: habilitar *worklets bundle mode*.
 ## 4. Antes de encerrar
 
 - Reproduza o bug num teste que falha, depois conserte. Se não der para testar, explique por quê.
-- `npm run verify`.
+- `pnpm run verify`.
 - Se o bug tinha como ser pego por um sensor, proponha o sensor (ver `HARNESS.md`).

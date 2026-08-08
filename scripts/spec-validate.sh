@@ -16,11 +16,11 @@ cd "$(dirname "$0")/.."
 if ! command -v openspec >/dev/null 2>&1; then
   if [[ "${OPENSPEC_REQUIRED:-0}" == "1" ]]; then
     echo "openspec não encontrado e OPENSPEC_REQUIRED=1." >&2
-    echo "Instale com: npm install -g @fission-ai/openspec@latest" >&2
+    echo "Instale com: pnpm add -g @fission-ai/openspec@latest" >&2
     exit 1
   fi
   echo "· specs: openspec não instalado — validação pulada."
-  echo "  Instale com: npm install -g @fission-ai/openspec@latest"
+  echo "  Instale com: pnpm add -g @fission-ai/openspec@latest"
   exit 0
 fi
 

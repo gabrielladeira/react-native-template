@@ -59,7 +59,7 @@ Nesta ordem, porque cada passo restringe o próximo:
 ## 5. Antes de terminar
 
 ```bash
-npm run verify
+pnpm run verify
 ```
 
 Se falhar, corrija a causa — não silencie a regra. Se a regra estiver genuinamente errada

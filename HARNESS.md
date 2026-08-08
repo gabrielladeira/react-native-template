@@ -127,13 +127,13 @@ reconsiderar. ADR é o antídoto contra churn arquitetural.
 
 | Sensor | Comando | Quando roda | Pega |
 |---|---|---|---|
-| ESLint + boundaries | `npm run lint` | a cada arquivo editado (hook), pre-PR, CI | violação de camada, infra fora do lugar, `any`, promise solta |
-| TypeScript | `npm run typecheck` | fim do turno (hook), CI | tudo que o tipo consegue exprimir |
-| Jest | `npm test` | pre-PR, CI | regressão de comportamento em funções puras e no contrato HTTP |
-| dependency-cruiser | `npm run arch` | pre-PR, CI | ciclo de import, módulo órfão, dep não declarada |
-| `openspec validate` | `npm run spec` | pre-PR, CI | spec estruturalmente inválida ou incompleta |
-| knip | `npm run deadcode` | CI (não bloqueia) | código morto acumulado |
-| expo-doctor | `npm run doctor` | CI (não bloqueia) | drift de versão do SDK |
+| ESLint + boundaries | `pnpm run lint` | a cada arquivo editado (hook), pre-PR, CI | violação de camada, infra fora do lugar, `any`, promise solta |
+| TypeScript | `pnpm run typecheck` | fim do turno (hook), CI | tudo que o tipo consegue exprimir |
+| Jest | `pnpm test` | pre-PR, CI | regressão de comportamento em funções puras e no contrato HTTP |
+| dependency-cruiser | `pnpm run arch` | pre-PR, CI | ciclo de import, módulo órfão, dep não declarada |
+| `openspec validate` | `pnpm run spec` | pre-PR, CI | spec estruturalmente inválida ou incompleta |
+| knip | `pnpm run deadcode` | CI (não bloqueia) | código morto acumulado |
+| expo-doctor | `pnpm run doctor` | CI (não bloqueia) | drift de versão do SDK |
 
 **O detalhe que mais importa:** as mensagens desses sensores são escritas *para serem lidas
 por um agente*. Compare:
@@ -165,7 +165,7 @@ A segunda fecha o loop de auto-correção sozinha. A primeira gera uma rodada de
 ```
      agente edita         agente encerra          pre-PR            CI
           │                     │                   │                │
-     eslint --fix          tsc --noEmit       npm run verify    verify + drift
+     eslint --fix          tsc --noEmit       pnpm run verify    verify + drift
      (hook, ~1s)           (hook, ~15s)          (~60s)         (~3min, tudo)
           │                     │                   │                │
      └── auto-correção sem custo humano ──┘   └─ /code-review ─┘  └ humano ┘
