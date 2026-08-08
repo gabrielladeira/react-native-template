@@ -55,7 +55,7 @@ describe('camada HTTP', () => {
   });
 
   it('anexa o Bearer token quando auth não está desligado', async () => {
-    configureAuth({ getToken: async () => 'tok-123', onUnauthorized: () => undefined });
+    configureAuth({ getToken: () => Promise.resolve('tok-123'), onUnauthorized: () => undefined });
     const stub = stubFetch(() => ({ status: 200, json: { id: '1', n: 1 } }));
     restore = stub.restore;
 
@@ -66,7 +66,7 @@ describe('camada HTTP', () => {
 
   it('dispara onUnauthorized em 401', async () => {
     const onUnauthorized = jest.fn();
-    configureAuth({ getToken: async () => null, onUnauthorized });
+    configureAuth({ getToken: () => Promise.resolve(null), onUnauthorized });
     const stub = stubFetch(() => ({ status: 401, json: {} }));
     restore = stub.restore;
 

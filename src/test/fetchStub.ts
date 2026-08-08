@@ -14,13 +14,13 @@ export function stubFetch(
   responder: (call: StubbedCall) => { status: number; json?: unknown } | Promise<never>,
 ): { calls: StubbedCall[]; restore: () => void } {
   const calls: StubbedCall[] = [];
-  const original = global.fetch;
+  const original = globalThis.fetch;
 
-  global.fetch = jest.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+  globalThis.fetch = jest.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
     const call: StubbedCall = {
-      url: String(input),
+      url: input instanceof URL ? input.toString() : typeof input === 'string' ? input : input.url,
       method: init?.method ?? 'GET',
-      headers: (init?.headers as Record<string, string>) ?? {},
+      headers: (init?.headers ?? {}) as Record<string, string>,
       body: typeof init?.body === 'string' ? JSON.parse(init.body) : undefined,
     };
     calls.push(call);
@@ -29,9 +29,9 @@ export function stubFetch(
     return {
       ok: result.status >= 200 && result.status < 300,
       status: result.status,
-      json: async () => result.json,
+      json: () => Promise.resolve(result.json),
     } as Response;
-  }) as unknown as typeof fetch;
+  });
 
-  return { calls, restore: () => void (global.fetch = original) };
+  return { calls, restore: () => void (globalThis.fetch = original) };
 }

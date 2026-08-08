@@ -14,7 +14,7 @@ const log = createLogger('http');
 type TokenProvider = () => Promise<string | null>;
 type UnauthorizedHandler = () => void;
 
-let getToken: TokenProvider = async () => null;
+let getToken: TokenProvider = () => Promise.resolve(null);
 let onUnauthorized: UnauthorizedHandler = () => undefined;
 
 export function configureAuth(options: {
